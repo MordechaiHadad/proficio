@@ -1,9 +1,8 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
     import { icons, type Context } from "$lib";
     import { createNewHabit } from "$lib/db";
-    import {
-        Check,
-    } from "lucide-svelte";
+    import { Check } from "lucide-svelte";
     import { getContext } from "svelte";
 
     let context = getContext<Context>("main");
@@ -11,6 +10,7 @@
     let currentIcon = $state("smoking");
     let habitName = $state("");
     let disabled = $derived(habitName.length === 0);
+    let error = $state("");
 </script>
 
 <div
@@ -30,9 +30,22 @@
         <input
             type="text"
             bind:value={habitName}
+            oninput={(event) => {
+                const value = (event.currentTarget as HTMLInputElement).value;
+                if (value.length > 20) {
+                    error = "Habit name cannot exceed 20 characters";
+                    disabled = true;
+                } else {
+                    error = "";
+                    disabled = false;
+                }
+            }}
             id="habit-name"
             class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all ease-in-out duration-200"
             placeholder="e.g., Read a book daily" />
+        {#if error}
+            <p class="text-sm text-destructive">{error}</p>
+        {/if}
     </div>
     <div class="flex flex-col gap-0.5 @container">
         <p>Choose an Icon</p>
@@ -57,8 +70,14 @@
     </div>
     <button
         onclick={async () => {
-            const habit = await createNewHabit(context.db!, habitName, currentIcon, "");
+            const habit = await createNewHabit(
+                context.db!,
+                habitName,
+                currentIcon,
+                ""
+            );
             context.trackedHabits = [...context.trackedHabits, habit];
+            await goto("/");
         }}
         {disabled}
         class="text-neutral-100 bg-sky-600 hover:bg-sky-700 rounded-md p-2 disabled:bg-sky-300"

@@ -1,13 +1,21 @@
 <script lang="ts">
     import { icons } from "$lib";
-    import { Trash, RotateCcw } from "lucide-svelte";
+    import { Trash, RotateCcw, Trash2 } from "lucide-svelte";
     import { onMount } from "svelte";
 
     let {
         icon,
         name,
         start_date,
-    }: { icon: string; name: string; start_date: Date } = $props();
+        ondelete,
+        onreset,
+    }: {
+        icon: string;
+        name: string;
+        start_date: Date;
+        ondelete: () => void;
+        onreset: () => void;
+    } = $props();
 
     let timeElapsed = $state({ days: 0, hours: 0, minutes: 0 });
 
@@ -59,8 +67,8 @@
             </span>
             {name}
         </div>
-        <button>
-            <Trash class="text-gray-300" />
+        <button class="p-2 hover:bg-neutral-200 rounded group" onclick={ondelete}>
+            <Trash2 class="text-gray-300 size-5 group-hover:text-destructive transition-colors ease-in-out duration-200" />
         </button>
     </div>
 
@@ -122,11 +130,11 @@
                     {Math.floor(timeElapsed.days / 365)} years
                 </p>
             {/if}
-
         </div>
     </div>
 
     <button
+        onclick={onreset}
         class="border border-destructive text-destructive px-4 py-2 rounded-md hover:bg-red-50 flex justify-center gap-2 w-full">
         <RotateCcw />
         Reset Counter

@@ -12,8 +12,17 @@
     let context: Context = $state<Context>({
         db: undefined,
         trackedHabits: [],
+        isDarkMode: false,
     });
     setContext<Context>("main", context);
+
+    $effect(() => {
+        if (context.isDarkMode) {
+            document.body.classList.add("dark");
+        } else {
+            document.body.classList.remove("dark");
+        }
+    });
 
     onMount(async () => {
         const db = await Database.load("sqlite:proficio.db");
@@ -27,9 +36,9 @@
     class="relative h-svh w-full overflow-y-auto flex flex-col items-center gap-4 pt-4 px-4 pb-24 bg-gray-100">
     <div class="flex gap-2 flex-col items-center">
         <h1 class="text-2xl font-semibold">Proficio</h1>
-        <p>Track your progress, break bad habits</p>
+        <p class="text-sm text-gray-600">Track your progress, break bad habits</p>
     </div>
-    <div class="w-full">
+    <div class="w-full max-w-5xl">
         {@render children()}
     </div>
     <nav
@@ -53,9 +62,9 @@
             <span>Add Habit</span>
         </a>
         <a
-            href="/contact"
+            href="/settings"
             class="flex flex-col place-content-center place-items-center gap-1 w-full h-full rounded-md text-gray-600 hover:text-sky-500 text-sm {currentRoute ===
-            '/contact'
+            '/settings'
                 ? 'bg-sky-200 text-sky-600'
                 : ''}">
             <Settings class="size-4" />

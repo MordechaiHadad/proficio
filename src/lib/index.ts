@@ -43,6 +43,7 @@ export const icons = {
 export type Context = {
     db?: Database;
     trackedHabits: TrackedHabit[];
+    isDarkMode: boolean;
 };
 
 export type TrackedHabit = {
@@ -50,4 +51,10 @@ export type TrackedHabit = {
     name: string;
     icon: string;
     start_date: Date;
+    habit_id: number;
 };
+
+export enum Result {
+    Ok,
+    Err,
+}
