@@ -39,7 +39,7 @@
                 }} />
         {/each}
     {:else}
-        <div class="flex flex-col gap-2 place-items-center text-center mt-16">
+        <div class="flex flex-col gap-2 place-items-center text-center mt-16 dark:text-neutral-100">
             <Clipboard class="size-20 text-gray-400" />
             <p>No habits yet</p>
             <p class="text-gray-600 text-sm">
