@@ -1,9 +1,16 @@
+@import '@fontsource-variable/tiktok-sans';
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
 	--color-destructive: #EF4444;
+}
+
+@layer base {
+    html {
+        font-family: "TikTok Sans Variable", sans-serif;
+    }
 }
 
 button, a {
