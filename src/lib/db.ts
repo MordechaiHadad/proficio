@@ -133,20 +133,18 @@ export async function resetHabitTracking(
     habit: TrackedHabit
 ): Promise<TrackedHabit> {
     if (typeof habit.id !== "number" || Number.isNaN(habit.id))
-        throw new Error("habitId must be a valid number");
+        throw new Error("habit.id must be a valid number");
 
-    const now = new Date().toISOString(); // UTC with trailing Z
+    const now = new Date().toISOString();
 
-    // Mark existing active tracking rows as failed
     await db.execute(
-        `UPDATE habit_tracking SET failure_date = $1, failed = 1 WHERE habit_id = $2 AND failed = 0`,
+        `UPDATE habit_tracking SET failure_date = $1, failed = 1 WHERE id = $2 AND failed = 0`,
         [now, habit.id]
     );
 
-    // Insert a fresh tracking row (new run)
     await db.execute(
         `INSERT INTO habit_tracking (habit_id, start_date, failed) VALUES ($1, $2, 0)`,
-        [habit.id, now]
+        [habit.habit_id, now]
     );
 
     const result = await db.select<{ id: number; start_date: Date }[]>(
@@ -156,10 +154,73 @@ export async function resetHabitTracking(
     const newTracking: TrackedHabit = {
         id: result[0].id,
         start_date: result[0].start_date,
-        habit_id: habit.id,
+        habit_id: habit.habit_id,
         icon: habit.icon,
         name: habit.name,
     };
 
     return newTracking;
+}
+
+/**
+ * Set the application's dark mode flag in `app_settings`.
+ * If a settings row exists, update it. Otherwise insert a new row.
+ */
+export async function setDarkMode(
+    db: Database,
+    isDark: boolean
+): Promise<boolean> {
+    if (typeof isDark !== "boolean")
+        throw new Error("isDark must be a boolean");
+
+    const value = isDark ? 1 : 0;
+
+    await db.execute(
+        `INSERT INTO app_settings (id, is_dark_mode) VALUES (1, $1)
+         ON CONFLICT(id) DO UPDATE SET is_dark_mode = excluded.is_dark_mode`,
+        [value]
+    );
+
+    return Boolean(value);
+}
+
+export async function getAppSettings(
+    db: Database
+): Promise<{ isDarkMode: boolean } | null> {
+    const rows = await db.select<{ is_dark_mode: number }[]>(
+        `SELECT is_dark_mode FROM app_settings WHERE id = 1 LIMIT 1`
+    );
+
+    if (!rows || rows.length === 0) return null;
+    return { isDarkMode: rows[0].is_dark_mode ? true : false };
+}
+
+export async function getAllTrackedHabits(
+    db: Database
+): Promise<{
+    name: string;
+    start_date: Date;
+    failure_date: Date | null;
+}[]> {
+    const rows = await db.select<
+        {
+            name: string;
+            start_date: string;
+            failure_date: string | null;
+        }[]
+    >(`
+        SELECT
+          h.name as name,
+          ht.start_date as start_date,
+          ht.failure_date as failure_date
+        FROM habit_tracking ht
+        INNER JOIN habits h ON h.id = ht.habit_id
+        ORDER BY ht.start_date DESC
+    `);
+
+    return (rows || []).map((r) => ({
+        name: r.name,
+        start_date: r.start_date ? new Date(r.start_date) : new Date(),
+        failure_date: r.failure_date ? new Date(r.failure_date) : null,
+    }));
 }

@@ -59,23 +59,23 @@
 </script>
 
 <div
-    class="bg-white flex flex-col p-4 rounded-lg border place-items-center border-gray-200 shadow-md w-full h-fit gap-8">
+    class="bg-white dark:bg-gray-800 flex flex-col p-4 rounded-lg border place-items-center border-gray-200 dark:border-gray-800 shadow-md w-full h-fit gap-8">
     <div class="flex justify-between w-full">
-        <div class="flex items-center gap-2 text-sm">
-            <span class="bg-sky-100 p-2 rounded-lg">
-                <Icon class="size-5 text-sky-600" />
+        <div class="flex items-center gap-2 text-sm dark:text-neutral-100">
+            <span class="bg-sky-100 dark:bg-blue-900 p-2 rounded-lg">
+                <Icon class="size-5 text-sky-600 dark:text-blue-400" />
             </span>
             {name}
         </div>
-        <button class="p-2 hover:bg-neutral-200 rounded group" onclick={ondelete}>
-            <Trash2 class="text-gray-300 size-5 group-hover:text-destructive transition-colors ease-in-out duration-200" />
+        <button class="p-2 hover:bg-neutral-200 dark:hover:bg-gray-600 rounded group" onclick={ondelete}>
+            <Trash2 class="text-gray-300 dark:text-gray-500 size-5 group-hover:text-destructive transition-colors ease-in-out duration-200" />
         </button>
     </div>
 
     <div class="flex flex-col gap-4 items-center">
         <div class="relative w-48 h-48 flex items-center justify-center">
             <div
-                class="absolute inset-0 rounded-full border-8 border-slate-100 dark:border-slate-800">
+                class="absolute inset-0 rounded-full border-8 border-slate-100 dark:border-slate-700/40">
             </div>
 
             <svg
@@ -90,7 +90,7 @@
                     stroke="currentColor"
                     stroke-width="8"
                     fill="none"
-                    class="text-sky-500 dark:text-sky-600"
+                    class="text-sky-500 dark:text-blue-400"
                     stroke-dasharray={circumference}
                     stroke-dashoffset={circumference -
                         Math.min(timeElapsed.days * 5, circumference)}
@@ -109,7 +109,7 @@
         </div>
 
         <div class="flex gap-2 flex-wrap justify-center">
-            <p class="bg-gray-100 rounded-full text-xs w-fit py-1 px-2">
+            <p class="bg-gray-100 dark:bg-gray-700 rounded-full dark:text-neutral-100 text-xs w-fit py-1 px-2">
                 {timeElapsed.hours}h {timeElapsed.minutes}m
             </p>
             {#if timeElapsed.days >= 7}
@@ -135,7 +135,7 @@
 
     <button
         onclick={onreset}
-        class="border border-destructive text-destructive px-4 py-2 rounded-md hover:bg-red-50 flex justify-center gap-2 w-full">
+        class="border border-destructive text-destructive px-4 py-2 rounded-md hover:bg-red-50 dark:hover:bg-red-950 flex justify-center gap-2 w-full">
         <RotateCcw />
         Reset Counter
     </button>

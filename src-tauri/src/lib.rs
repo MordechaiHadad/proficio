@@ -12,10 +12,15 @@ pub fn run() {
         version: 1,
         sql: include_str!("../migrations/initial_schema.sql"),
         description: "Initial schema",
-        kind: MigrationKind::Up
+        kind: MigrationKind::Up,
     }];
     tauri::Builder::default()
-        .plugin(tauri_plugin_sql::Builder::default().add_migrations("sqlite:proficio.db", migrations).build())
+        .plugin(tauri_plugin_fs::init())
+        .plugin(
+            tauri_plugin_sql::Builder::default()
+                .add_migrations("sqlite:proficio.db", migrations)
+                .build(),
+        )
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![greet])
         .run(tauri::generate_context!())

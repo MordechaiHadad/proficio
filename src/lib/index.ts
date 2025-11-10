@@ -58,3 +58,36 @@ export enum Result {
     Ok,
     Err,
 }
+
+export type HabitExportRow = {
+    habit_name: string;
+    start_date: string;
+    failure_date: string;
+    days_lasted: number;
+};
+
+export function generateCSV(
+    headers: (keyof HabitExportRow)[],
+    rows: HabitExportRow[]
+): string {
+    function regularCase(key: string) {
+        return key
+            .replace(/_/g, " ")
+            .replace(/\b\w/g, (c) => c.toUpperCase());
+    }
+
+    const csvContent = [
+        headers.map((h) => regularCase(String(h))).join(","),
+        ...rows.map((row) =>
+            headers
+                .map((header) => {
+                    const cell = row[header] ?? "";
+                    const escaped = String(cell).replace(/"/g, '""');
+                    return /[",\n]/.test(escaped) ? `"${escaped}"` : escaped;
+                })
+                .join(",")
+        ),
+    ].join("\n");
+
+    return csvContent;
+}

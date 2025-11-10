@@ -71,12 +71,12 @@
             progress. This action cannot be undone.</AlertDialog.Description>
     </AlertDialog.Header>
 
-    <AlertDialog.Footer class="flex gap-2 justify-end flex-col sm:flex-row">
+    <AlertDialog.Footer class="flex gap-2 justify-start flex-col sm:flex-row-reverse">
         <AlertDialog.Confirm
-            class="text-center inline bg-destructive text-neutral-100 rounded p-1 hover:bg-destructive/80"
+            class="text-center inline bg-destructive text-neutral-100 rounded p-1 sm:px-4 hover:bg-destructive/80"
             >Delete</AlertDialog.Confirm>
         <AlertDialog.Cancel
-            class="text-center inline bg-neutral-100 text-neutral-900 rounded p-1 border border-gray-200 hover:bg-neutral-200"
+            class="text-center inline bg-neutral-100 text-neutral-900 rounded p-1 sm:px-4 border border-gray-200 hover:bg-neutral-200"
             >Cancel</AlertDialog.Cancel>
     </AlertDialog.Footer>
 </AlertDialog>
@@ -100,12 +100,12 @@
             days. Are you sure you want to continue?</AlertDialog.Description>
     </AlertDialog.Header>
 
-    <AlertDialog.Footer class="flex gap-2 justify-end flex-col sm:flex-row">
+    <AlertDialog.Footer class="flex gap-2 justify-start flex-col sm:flex-row-reverse">
         <AlertDialog.Confirm
-            class="text-center inline bg-sky-500 text-neutral-100 rounded p-1 hover:bg-sky-600"
+            class="text-center inline bg-destructive text-neutral-100 rounded p-1 sm:px-4 hover:bg-destructive/80"
             >Reset</AlertDialog.Confirm>
         <AlertDialog.Cancel
-            class="text-center inline bg-neutral-100 text-neutral-900 rounded p-1 border border-gray-200 hover:bg-neutral-200"
+            class="text-center inline bg-neutral-100 text-neutral-900 rounded p-1 sm:px-4 border border-gray-200 hover:bg-neutral-200"
             >Cancel</AlertDialog.Cancel>
     </AlertDialog.Footer>
 </AlertDialog>
