@@ -3,12 +3,11 @@
         generateCSV,
         type Context,
         type HabitExportRow,
-        type TrackedHabit,
     } from "$lib";
     import ToggleSwitch from "$lib/components/ToggleSwitch.svelte";
     import { getAllTrackedHabits, setDarkMode } from "$lib/db";
     import { getVersion } from "@tauri-apps/api/app";
-    import { message, save } from "@tauri-apps/plugin-dialog";
+    import { save } from "@tauri-apps/plugin-dialog";
     import { BaseDirectory, writeTextFile } from "@tauri-apps/plugin-fs";
     import { Download, Moon, Sun } from "lucide-svelte";
     import { getContext, onMount } from "svelte";
