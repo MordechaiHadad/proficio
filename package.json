@@ -16,6 +16,7 @@
     "@fontsource-variable/tiktok-sans": "^5.2.3",
     "@tailwindcss/vite": "^4.1.16",
     "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-dialog": "~2",
     "@tauri-apps/plugin-fs": "~2",
     "@tauri-apps/plugin-opener": "^2",
     "@tauri-apps/plugin-sql": "~2",

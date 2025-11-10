@@ -8,6 +8,7 @@
     import ToggleSwitch from "$lib/components/ToggleSwitch.svelte";
     import { getAllTrackedHabits, setDarkMode } from "$lib/db";
     import { getVersion } from "@tauri-apps/api/app";
+    import { message, save } from "@tauri-apps/plugin-dialog";
     import { BaseDirectory, writeTextFile } from "@tauri-apps/plugin-fs";
     import { Download, Moon, Sun } from "lucide-svelte";
     import { getContext, onMount } from "svelte";
@@ -97,11 +98,21 @@
                         "days_lasted",
                     ];
                     const csvContent = generateCSV(headers, rows);
-                    const path = `proficio_habit_export_${new Date()
+                    const fileName = `proficio_habit_export_${new Date()
                         .toISOString()
                         .slice(0, 10)}.csv`;
 
-                    console.log(path);
+                    const path = await save({
+                        defaultPath: fileName,
+                        filters: [
+                            {
+                                name: "CSV Files",
+                                extensions: ["csv"],
+                            },
+                        ],
+                    });
+                    if (!path) return;
+
                     await writeTextFile(path, csvContent, {
                         baseDir: BaseDirectory.Download,
                     });
