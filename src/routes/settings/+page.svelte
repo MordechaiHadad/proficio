@@ -62,7 +62,7 @@
     <div class="flex flex-col gap-1">
         <p>Data Management</p>
         <div
-            class="flex justify-between sm:items-center bg-gray-50 dark:bg-gray-700 rounded-lg gap-2 p-4 text-sm border border-gray-200 dark:border-gray-700">
+            class="flex flex-col bg-gray-50 dark:bg-gray-700 rounded-lg gap-4 p-4 text-sm border border-gray-200 dark:border-gray-700">
             <div class="flex flex-col">
                 <p>Export Habits</p>
                 <p class="text-gray-600 dark:text-gray-400">
@@ -116,7 +116,7 @@
                         baseDir: BaseDirectory.Download,
                     });
                 }}
-                class="py-1 px-2 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-nowrap h-fit inline-flex items-center gap-2 rounded-md text-xs hover:bg-gray-100 dark:hover:bg-gray-600 transition-all ease-in-out duration-200">
+                class="p-3 place-content-center border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-nowrap h-fit inline-flex items-center gap-2 rounded-md text-xs hover:bg-gray-100 dark:hover:bg-gray-600 transition-all ease-in-out duration-200">
                 <Download class="size-4" />
                 Export CSV
             </button>
