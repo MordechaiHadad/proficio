@@ -5,8 +5,8 @@
 Proficio is a cross-platform habit tracking application that helps you monitor your journey away from bad habits. Built with Tauri, SvelteKit, and TypeScript, it provides a clean, intuitive interface to visualize your progress in real-time.
 
 <img src="https://github.com/user-attachments/assets/0da86c4c-684f-478a-9729-c53edc235011" width="250">
-<img src="https://github.com/user-attachments/assets/89d55858-4171-49d3-984a-7b7c2004e190" width="250">
 <img src="https://github.com/user-attachments/assets/953f001d-a941-4e09-bb83-02a9c40f3792" width="250">
+<img src="https://github.com/user-attachments/assets/89d55858-4171-49d3-984a-7b7c2004e190" width="250">
 
 
 ## 🌟 Features
