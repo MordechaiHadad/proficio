@@ -193,6 +193,18 @@ jobs:
           base64 -d <<< "${{ secrets.ANDROID_KEY_BASE64 }}" > $RUNNER_TEMP/keystore.jks
           echo "storeFile=$RUNNER_TEMP/keystore.jks" >> keystore.properties
 
+      - name: Verify decoded keystore
+        run: |
+          KS="$RUNNER_TEMP/keystore.jks"
+          if [ -f "$KS" ] && [ -s "$KS" ]; then
+            # print only the size (safe) so we don't leak keystore contents or passwords
+            SIZE=$(stat -c%s "$KS" || echo "unknown")
+            echo "Keystore exists and is non-empty (size=${SIZE} bytes)"
+          else
+            echo "Keystore not found or empty: $KS" >&2
+            exit 1
+          fi
+
       - name: Build Android APK (ARM64)
         run: bun run build:android-arm true
         env:
