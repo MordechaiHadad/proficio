@@ -12,8 +12,8 @@
     let currentHabit = $state<TrackedHabit | null>(null);
 </script>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 size-full">
-    {#if context.trackedHabits && context.trackedHabits.length > 0}
+{#if context.trackedHabits && context.trackedHabits.length > 0}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 size-full">
         {#each context.trackedHabits as habit}
             <HabitCard
                 icon={habit.icon}
@@ -38,16 +38,17 @@
                     resetDialogOpen = true;
                 }} />
         {/each}
-    {:else}
-        <div class="flex flex-col gap-2 place-items-center text-center mt-16 dark:text-neutral-100">
-            <Clipboard class="size-20 text-gray-400" />
-            <p>No habits yet</p>
-            <p class="text-gray-600 text-sm">
-                Start tracking your progress by adding a habit
-            </p>
-        </div>
-    {/if}
-</div>
+    </div>
+{:else}
+    <div
+        class="flex flex-col gap-2 place-items-center text-center mt-16 dark:text-neutral-100">
+        <Clipboard class="size-20 text-gray-400" />
+        <p>No habits yet</p>
+        <p class="text-gray-600 text-sm">
+            Start tracking your progress by adding a habit
+        </p>
+    </div>
+{/if}
 
 <AlertDialog
     bind:isOpen={deleteDialogOpen}
@@ -71,7 +72,8 @@
             progress. This action cannot be undone.</AlertDialog.Description>
     </AlertDialog.Header>
 
-    <AlertDialog.Footer class="flex gap-2 justify-start flex-col sm:flex-row-reverse">
+    <AlertDialog.Footer
+        class="flex gap-2 justify-start flex-col sm:flex-row-reverse">
         <AlertDialog.Confirm
             class="text-center inline bg-destructive text-neutral-100 rounded p-1 sm:px-4 hover:bg-destructive/80"
             >Delete</AlertDialog.Confirm>
@@ -100,7 +102,8 @@
             days. Are you sure you want to continue?</AlertDialog.Description>
     </AlertDialog.Header>
 
-    <AlertDialog.Footer class="flex gap-2 justify-start flex-col sm:flex-row-reverse">
+    <AlertDialog.Footer
+        class="flex gap-2 justify-start flex-col sm:flex-row-reverse">
         <AlertDialog.Confirm
             class="text-center inline bg-destructive text-neutral-100 rounded p-1 sm:px-4 hover:bg-destructive/80"
             >Reset</AlertDialog.Confirm>

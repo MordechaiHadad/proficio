@@ -21,12 +21,26 @@
         else document.body.classList.remove("dark");
     });
 
-    if (data?.settings) context.isDarkMode = data.settings.isDarkMode || false;
+    if (data?.settings) context.isDarkMode = data.settings.isDarkMode;
+    else
+        context.isDarkMode =
+            window?.matchMedia("(prefers-color-scheme: dark)")?.matches ??
+            false;
+
     if (data?.habits) context.trackedHabits = data.habits;
 
     onMount(async () => {
         const db = await Database.load("sqlite:proficio.db");
         context.db = db;
+
+        if (!data?.settings) {
+            const mediaQuery = window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            );
+            mediaQuery.addEventListener("change", (e) => {
+                context.isDarkMode = e.matches;
+            });
+        }
     });
 </script>
 
