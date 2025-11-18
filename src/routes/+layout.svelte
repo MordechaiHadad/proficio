@@ -45,7 +45,7 @@
 </script>
 
 <div
-    class="relative h-svh w-full overflow-y-auto flex flex-col items-center gap-4 pt-4 md:pt-16 md:gap-8 px-4 pb-24 bg-gray-100 dark:bg-gray-900">
+    class="relative min-h-dvh w-full overflow-y-auto flex flex-col items-center gap-4 pt-4 md:pt-16 md:gap-8 px-4 pb-24 bg-gray-100 dark:bg-gray-900">
     <div class="flex gap-2 flex-col items-center">
         <h1 class="text-2xl font-semibold dark:text-neutral-100">Proficio</h1>
         <p class="text-sm text-gray-600 dark:text-gray-400">
