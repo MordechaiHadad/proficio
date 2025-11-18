@@ -62,7 +62,6 @@ jobs:
           path: |
             src-tauri/target/release/bundle/msi/*.msi
             src-tauri/target/release/bundle/nsis/*.exe
-          compression-level: 0
 
   # Build for macOS
   build-macos:
@@ -97,7 +96,6 @@ jobs:
           path: |
             src-tauri/target/release/bundle/dmg/*.dmg
             src-tauri/target/release/bundle/macos/*.app
-          compression-level: 0
 
   # Build for Linux
   build-linux:
@@ -142,7 +140,6 @@ jobs:
           path: |
             src-tauri/target/release/bundle/deb/*.deb
             src-tauri/target/release/bundle/appimage/*.AppImage
-          compression-level: 0
 
   # Build for Android
   build-android:
@@ -220,4 +217,3 @@ jobs:
           path: |
             src-tauri/gen/android/app/build/outputs/apk/**/*.apk
             src-tauri/gen/android/app/build/outputs/bundle/**/*.aab
-          compression-level: 0
