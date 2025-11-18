@@ -63,11 +63,11 @@
                 (h) => h.habit_id !== currentHabit!.habit_id
             );
     }}
-    class="backdrop:backdrop-blur-xs transition-discrete open:starting:opacity-0 open:starting:scale-95 w-[90%] max-w-2xl scale-95 flex-col gap-4 place-self-center rounded-md bg-neutral-100 px-4 py-6 opacity-0 shadow transition-all duration-200 ease-in-out open:flex open:scale-100 open:opacity-100">
+    class="backdrop:backdrop-blur-xs transition-discrete open:starting:opacity-0 open:starting:scale-95 w-[90%] max-w-2xl scale-95 flex-col gap-4 place-self-center rounded-md bg-neutral-100 dark:bg-gray-900 text-neutral-900 dark:text-neutral-100 px-4 py-6 opacity-0 shadow transition-all duration-200 ease-in-out open:flex open:scale-100 open:opacity-100">
     <AlertDialog.Header class="flex flex-col gap-2 place-items-center">
-        <AlertDialog.Title class="font-bold text-neutral-900"
+        <AlertDialog.Title class="font-bold"
             >Delete habit?</AlertDialog.Title>
-        <AlertDialog.Description class="text-sm text-gray-600 text-center"
+        <AlertDialog.Description class="text-sm text-gray-600 dark:text-gray-400 text-center"
             >This will permanently delete "{currentHabit?.name}" and all its
             progress. This action cannot be undone.</AlertDialog.Description>
     </AlertDialog.Header>
@@ -78,7 +78,7 @@
             class="text-center inline bg-destructive text-neutral-100 rounded p-1 sm:px-4 hover:bg-destructive/80"
             >Delete</AlertDialog.Confirm>
         <AlertDialog.Cancel
-            class="text-center inline bg-neutral-100 text-neutral-900 rounded p-1 sm:px-4 border border-gray-200 hover:bg-neutral-200"
+            class="text-center inline bg-neutral-100 text-neutral-900 dark:bg-gray-800 dark:text-neutral-100 rounded p-1 sm:px-4 border border-gray-200 dark:border-gray-900 hover:bg-neutral-200 dark:hover:bg-gray-700"
             >Cancel</AlertDialog.Cancel>
     </AlertDialog.Footer>
 </AlertDialog>
@@ -93,11 +93,11 @@
         );
     }}
     bind:isOpen={resetDialogOpen}
-    class="backdrop:backdrop-blur-xs transition-discrete open:starting:opacity-0 open:starting:scale-95 w-[90%] max-w-2xl scale-95 flex-col gap-4 place-self-center rounded-md bg-neutral-100 px-4 py-6 opacity-0 shadow transition-all duration-200 ease-in-out open:flex open:scale-100 open:opacity-100">
+    class="backdrop:backdrop-blur-xs transition-discrete open:starting:opacity-0 open:starting:scale-95 w-[90%] max-w-2xl scale-95 flex-col gap-4 place-self-center rounded-md bg-neutral-100 dark:bg-gray-900 dark:text-neutral-100 px-4 py-6 opacity-0 shadow transition-all duration-200 ease-in-out open:flex open:scale-100 open:opacity-100">
     <AlertDialog.Header class="flex flex-col gap-2 place-items-center">
-        <AlertDialog.Title class="font-bold text-neutral-900"
+        <AlertDialog.Title class="font-bold"
             >Reset counter?</AlertDialog.Title>
-        <AlertDialog.Description class="text-sm text-gray-600 text-center"
+        <AlertDialog.Description class="text-sm text-gray-600 dark:text-gray-400 text-center"
             >This will reset your progress for "{currentHabit?.name}" back to 0
             days. Are you sure you want to continue?</AlertDialog.Description>
     </AlertDialog.Header>
@@ -108,7 +108,7 @@
             class="text-center inline bg-destructive text-neutral-100 rounded p-1 sm:px-4 hover:bg-destructive/80"
             >Reset</AlertDialog.Confirm>
         <AlertDialog.Cancel
-            class="text-center inline bg-neutral-100 text-neutral-900 rounded p-1 sm:px-4 border border-gray-200 hover:bg-neutral-200"
+            class="text-center inline bg-neutral-100 text-neutral-900 dark:bg-gray-800 dark:text-neutral-100 rounded p-1 sm:px-4 border border-gray-200 dark:border-gray-900 hover:bg-neutral-200 dark:hover:bg-gray-700"
             >Cancel</AlertDialog.Cancel>
     </AlertDialog.Footer>
 </AlertDialog>
