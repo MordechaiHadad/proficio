@@ -46,7 +46,7 @@
 </script>
 
 <div
-    class="relative min-h-dvh w-full overflow-y-auto flex flex-col items-center gap-4 {currentPlatform === "android" || "ios" ? "pt-8 pb-2" : "pt-4"} md:pt-16 md:gap-8 px-4 pb-24 bg-gray-100 dark:bg-gray-900">
+    class="relative min-h-dvh w-full overflow-y-auto flex flex-col items-center gap-4 {currentPlatform === "android" || "ios" ? "pt-16 pb-8" : "pt-4"} md:pt-16 md:gap-8 px-4 pb-24 bg-gray-100 dark:bg-gray-900">
     <div class="flex gap-2 flex-col items-center">
         <h1 class="text-2xl font-semibold dark:text-neutral-100">Proficio</h1>
         <p class="text-sm text-gray-600 dark:text-gray-400">
