@@ -87,7 +87,7 @@
         {@render children()}
     </div>
     <nav
-        class="grid grid-cols-3 fixed {currentPlatform === 'android' || currentPlatform === 'ios' ? 'bottom-3' : 'bottom-0'} left-0 right-0 justify-between z-10 w-full h-20 p-2 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 lg:hidden">
+        class="grid grid-cols-3 fixed {currentPlatform === 'android' || currentPlatform === 'ios' ? 'bottom-3 shadow-[0_5rem_0_5rem] shadow-white dark:shadow-gray-800' : 'bottom-0'} left-0 right-0 justify-between z-10 w-full h-20 p-2 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 lg:hidden">
         <a
             href="/"
             class="flex flex-col place-content-center place-items-center gap-1 w-full h-full rounded-md text-gray-600 dark:text-gray-400 hover:text-sky-600 dark:hover:text-blue-500 text-sm {currentRoute ===
