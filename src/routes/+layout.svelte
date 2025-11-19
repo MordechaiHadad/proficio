@@ -46,7 +46,7 @@
 </script>
 
 <div
-    class="relative min-h-dvh w-full overflow-y-auto flex flex-col items-center gap-4 {currentPlatform === "android" || "ios" ? "pt-16 pb-8" : "pt-4"} md:pt-16 md:gap-8 px-4 pb-24 bg-gray-100 dark:bg-gray-900">
+    class="relative min-h-dvh w-full overflow-y-auto flex flex-col items-center gap-4 {currentPlatform === 'android' || currentPlatform === 'ios' ? 'pt-16' : 'pt-4'} md:pt-16 md:gap-8 px-4 pb-24 bg-gray-100 dark:bg-gray-900">
     <div class="flex gap-2 flex-col items-center">
         <h1 class="text-2xl font-semibold dark:text-neutral-100">Proficio</h1>
         <p class="text-sm text-gray-600 dark:text-gray-400">
@@ -87,7 +87,7 @@
         {@render children()}
     </div>
     <nav
-        class="grid grid-cols-3 fixed bottom-0 left-0 right-0 justify-between z-10 w-full h-20 p-2 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 lg:hidden">
+        class="grid grid-cols-3 fixed {currentPlatform === 'android' || currentPlatform === 'ios' ? 'bottom-2' : 'bottom-0'} left-0 right-0 justify-between z-10 w-full h-20 p-2 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 lg:hidden">
         <a
             href="/"
             class="flex flex-col place-content-center place-items-center gap-1 w-full h-full rounded-md text-gray-600 dark:text-gray-400 hover:text-sky-600 dark:hover:text-blue-500 text-sm {currentRoute ===
