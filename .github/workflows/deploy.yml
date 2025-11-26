@@ -168,7 +168,6 @@ jobs:
             artifacts/msi/*.msi
             artifacts/nsis/*.exe
             artifacts/dmg/*.dmg
-            artifacts/macos/**/*.app/**
             artifacts/deb/*.deb
             artifacts/appimage/*.AppImage
             artifacts/apk/**/*release*.apk
