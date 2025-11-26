@@ -159,15 +159,15 @@ jobs:
           path: artifacts
           merge-multiple: true
 
+      - name: List downloaded artifacts (debug)
+        run: ls -laR artifacts || true
+
       - name: Create release (generate notes) and upload artifacts
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
           generate_release_notes: true
           files: |
-            artifacts/release-windows/**
-            artifacts/release-macos/**
-            artifacts/release-linux/**
-            artifacts/release-android/**
+            artifacts/**
           overwrite_files: true
           token: ${{ secrets.GITHUB_TOKEN }}
