@@ -14,7 +14,7 @@
 
 {#if context.trackedHabits && context.trackedHabits.length > 0}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 size-full">
-        {#each context.trackedHabits as habit}
+        {#each context.trackedHabits.toSorted((a, b) => new Date(a.start_date).getTime() - new Date(b.start_date).getTime()) as habit}
             <HabitCard
                 icon={habit.icon}
                 name={habit.name}
@@ -65,9 +65,9 @@
     }}
     class="backdrop:backdrop-blur-xs transition-discrete open:starting:opacity-0 open:starting:scale-95 w-[90%] max-w-2xl scale-95 flex-col gap-4 place-self-center rounded-md bg-neutral-100 dark:bg-gray-900 text-neutral-900 dark:text-neutral-100 px-4 py-6 opacity-0 shadow transition-all duration-200 ease-in-out open:flex open:scale-100 open:opacity-100">
     <AlertDialog.Header class="flex flex-col gap-2 place-items-center">
-        <AlertDialog.Title class="font-bold"
-            >Delete habit?</AlertDialog.Title>
-        <AlertDialog.Description class="text-sm text-gray-600 dark:text-gray-400 text-center"
+        <AlertDialog.Title class="font-bold">Delete habit?</AlertDialog.Title>
+        <AlertDialog.Description
+            class="text-sm text-gray-600 dark:text-gray-400 text-center"
             >This will permanently delete "{currentHabit?.name}" and all its
             progress. This action cannot be undone.</AlertDialog.Description>
     </AlertDialog.Header>
@@ -95,9 +95,9 @@
     bind:isOpen={resetDialogOpen}
     class="backdrop:backdrop-blur-xs transition-discrete open:starting:opacity-0 open:starting:scale-95 w-[90%] max-w-2xl scale-95 flex-col gap-4 place-self-center rounded-md bg-neutral-100 dark:bg-gray-900 dark:text-neutral-100 px-4 py-6 opacity-0 shadow transition-all duration-200 ease-in-out open:flex open:scale-100 open:opacity-100">
     <AlertDialog.Header class="flex flex-col gap-2 place-items-center">
-        <AlertDialog.Title class="font-bold"
-            >Reset counter?</AlertDialog.Title>
-        <AlertDialog.Description class="text-sm text-gray-600 dark:text-gray-400 text-center"
+        <AlertDialog.Title class="font-bold">Reset counter?</AlertDialog.Title>
+        <AlertDialog.Description
+            class="text-sm text-gray-600 dark:text-gray-400 text-center"
             >This will reset your progress for "{currentHabit?.name}" back to 0
             days. Are you sure you want to continue?</AlertDialog.Description>
     </AlertDialog.Header>
